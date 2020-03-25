@@ -1,0 +1,48 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/framework?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone = GMT
+    username: root
+    password: root
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    password:
+    timeout: 10000ms
+    jedis:
+      pool:
+        max-active: 10000
+        max-idle: 50
+        max-wait: 1
+        min-idle: 0
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
+    cache: false
+framework:
+  security:
+    oauth2:
+      clients:
+        -
+          clientId: client
+          clientSecret: 123qwe
+          accessTokenValiditySeconds: 200
+          authorizedGrantTypes: ["refresh_token", "password","authorization_code"]
+          redirectUris: "http://example.com"
+          scopes: ["all", "read", "write"]
+        -
+          clientId: maxmoney
+          clientSecret: maxmoney@WZ
+          accessTokenValiditySeconds: 1800
+          authorizedGrantTypes: ["refresh_token", "password","authorization_code"]
+          redirectUris: "http://localhost:21909/test"
+          scopes: ["all", "read", "write"]
+      tokenStore: jwt
+      jwtSigningKey: secret
+      confirm_url: "/custom/confirm_access"
+      tokenInfo:
+        author: "Huang"
+        project: "test-framework"
