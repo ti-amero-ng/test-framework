@@ -18,6 +18,11 @@ public class SwaggerConfig extends GlobalSwaggerConfig {
     private boolean enable;
 
     @Override
+    public boolean swaggerEnable() {
+        return enable;
+    }
+
+    @Override
     protected List<SwaggerApiInfo> configureSwaggerApiInfo() {
 
         List<SwaggerApiInfo> swaggerApiInfos = new ArrayList<>();
